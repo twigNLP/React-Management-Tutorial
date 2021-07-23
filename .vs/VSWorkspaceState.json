@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
-    "\\src",
-    "\\src\\components"
+    "\\client"
   ],
   "PreviewInSolutionExplorer": false
 }

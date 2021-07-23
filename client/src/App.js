@@ -17,34 +17,23 @@ const styles = theme => ({
     table: {
         minWidth: 1080
     }
-})
-const customers =[
-{
-    'id': 1,
-    'img': 'https://placeimg.com/64/64/1',
-    'name': '홍길동',
-    'birthday': '1234',
-    'gender': '남자',
-    'job': '대학생'
-},
-{
-    'id': 2,
-    'img': 'https://placeimg.com/64/64/2',
-    'name': '홍길동1',
-    'birthday': '4567',
-    'gender': '남자',
-    'job': '대학생'
-},
-{
-    'id': 3,
-    'img': 'https://placeimg.com/64/64/any3',
-    'name': '홍길동2',
-    'birthday': '8901',
-    'gender': '남자',
-    'job': '대학생'
-}
-]
+});
+
 class App extends Component {
+    state = {
+        customers:""
+    }
+
+    componentDidMount() {
+        this.callApi()
+            .then(res => this.setState({ customers: res }))
+            .catch(err => console.log(err));
+    }
+    callApi = async () => {
+        const response = await fetch('/api/customers');
+        const body = await response.json();
+        return body;
+    }
     render() {
         const {classes} = this.props;
         return (        
@@ -54,13 +43,13 @@ class App extends Component {
             <TableCell>id</TableCell>
             <TableCell>이미지</TableCell>
             <TableCell>이름</TableCell>
-            <TableCell>생년월일</TableCell>
+            <TableCell>주민번호</TableCell>
             <TableCell>성별</TableCell>
             <TableCell>직업</TableCell>
         </TableHead>
         <TableBody>
-        {
-            customers.map(c => {return(<Customer key={c.id} id = {c.id} img={c.img} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/> ); })
+                        {
+                            this.state.customers ? this.state.customers.map(c => { return (<Customer key={c.id} id={c.id} img={c.img} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />); }) : ""
         }
         </TableBody>
         </Table>
