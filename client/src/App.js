@@ -41,10 +41,10 @@ class App extends Component {
         <Table className={classes.table}>
         <TableHead>
             <TableCell>id</TableCell>
-            <TableCell>이미지</TableCell>
-            <TableCell>이름</TableCell>
-            <TableCell>주민번호</TableCell>
-            <TableCell>성별</TableCell>
+            <TableCell>?��?지</TableCell>
+            <TableCell>?�름</TableCell>
+            <TableCell>주�?번호</TableCell>
+            <TableCell>?�별</TableCell>
             <TableCell>직업</TableCell>
         </TableHead>
         <TableBody>
